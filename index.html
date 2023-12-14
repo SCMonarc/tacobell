@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Protected Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to bottom right, #8e44ad, #3498db);
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        input[type="password"] {
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: black;
+            color: white;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+
+        #bellImage {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img id="bellImage" src="bell.png" alt="Bell Image">
+        <form id="passwordForm" onsubmit="checkPassword(); return false;">
+            <input type="password" id="password" name="password" required>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <audio id="easterEggAudio" src="asset.mp3"></audio>
+
+    <script>
+        var audio = new Audio("asset.mp3");
+
+        function checkPassword() {
+            var password = document.getElementById("password").value;
+
+            if (password === "paradise") {
+                window.location.href = "https://scmonarc.github.io/schedule-/";
+            } else if (password === "asset") {
+                if (audio.paused) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                    audio.currentTime = 0;
+                    audio.play();
+                }
+            } else {
+                alert("Incorrect password. Welcome to paradise");
+            }
+        }
+    </script>
+
+</body>
+</html>
